@@ -27,9 +27,9 @@ const HeaderMenu = () => {
     <nav className='Header__menu'>
       {menu.length > 0 && (
         <ul className='Header__menu-list'>
-          {menu.map((el) => {
+          {menu.map((el, idx) => {
             return (
-              <li className='Header__menu-item'>
+              <li className='Header__menu-item' key={`menuList${idx}`}>
                 <Link href={el.link}>{el.title}</Link>
               </li>
             );
