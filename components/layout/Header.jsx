@@ -2,6 +2,8 @@ import Link from 'next/link';
 import menu from 'data/menu.json';
 import app from 'data/app.json';
 
+import LOGO from 'src/assets/images/logo.svg';
+
 // COMPONENT main component
 const Header = () => {
   return (
@@ -18,7 +20,10 @@ const Header = () => {
 const HeaderTitle = (props) => {
   return (
     <div className='Header__title'>
-      <Link href={props.link || '/'}>{props.title || app.title}</Link>
+      <Link href={props.link || '/'}>
+        <LOGO className='Header__logo' />
+        <span className='Header__title-text'>{props.title || app.title}</span>
+      </Link>
     </div>
   );
 };

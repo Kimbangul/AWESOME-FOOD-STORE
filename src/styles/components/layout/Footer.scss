@@ -5,7 +5,18 @@
 
   &__inner {
     @include inner;
+    @include flex(space-between, center);
     height: 100%;
     padding: 3.2rem 0;
+  }
+
+  &__title {
+    @include body_bold;
+    color: $text_02;
+  }
+
+  &__copy {
+    @include body_regular;
+    color: $text_02;
   }
 }
