@@ -2,7 +2,9 @@ import Link from 'next/link';
 import { useState } from 'react';
 import Image from 'next/image';
 import useAPICall from 'utils/useAPICall';
-import StoreModal from './StoreModal';
+
+import ImageView from 'components/common/ImageView';
+import StoreModal from 'components/store/StoreModal';
 
 // COMPONENT main component
 const Store = () => {
@@ -23,6 +25,7 @@ const Store = () => {
 
   return (
     <section className='Store'>
+      <h1 className='Store__title'>Store</h1>
       {storeList.data?.length > 0 && (
         <StoreListView
           data={storeList.data}
@@ -35,7 +38,7 @@ const Store = () => {
 };
 
 // COMPONENT store list
-const StoreListView = (props) => {
+export const StoreListView = (props) => {
   return (
     <ul className='Store__list'>
       {props.data.map((el) => {
@@ -45,7 +48,7 @@ const StoreListView = (props) => {
             key={`storeList${el.id}`}
             onClick={props.onClickStoreItem(el)}
           >
-            <Image src={el.thumb} width={300} height={300} alt={el.name} />
+            <ImageView src={el.thumb} alt={el.name} />
           </li>
         );
       })}

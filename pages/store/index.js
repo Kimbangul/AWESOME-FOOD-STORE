@@ -2,16 +2,15 @@ import HeadInfo from 'utils/Head';
 import Header from 'components/layout/Header';
 import Footer from 'components/layout/Footer';
 import Page from 'components/layout/Page';
-import PageNotFound from 'components/404/PageNotFound';
-import app from 'data/app.json';
+import Store from 'components/store/Store';
 
 export default function index() {
   return (
     <>
-      <HeadInfo title={`404 Not Found :: ${app.title}`} />
+      <HeadInfo />
       <Header />
       <Page>
-        <PageNotFound />
+        <Store />
       </Page>
       <Footer />
     </>

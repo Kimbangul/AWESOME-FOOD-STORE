@@ -10,7 +10,6 @@ export default function index() {
       <HeadInfo />
       <Header />
       <Page>
-        <Store />
       </Page>
       <Footer />
     </>
