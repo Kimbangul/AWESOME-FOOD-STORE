@@ -1,6 +1,4 @@
-import Link from 'next/link';
 import { useState } from 'react';
-import Image from 'next/image';
 import useAPICall from 'utils/useAPICall';
 
 import ImageView from 'components/common/ImageView';
@@ -29,7 +27,7 @@ const Store = () => {
       {storeList.data?.length > 0 && (
         <StoreListView
           data={storeList.data}
-          onClickStoreItem={onClickStoreItem}
+          onClickStoreItem={onClickStoreItem || null}
         />
       )}
       <ModalView data={modalData} />
@@ -41,12 +39,12 @@ const Store = () => {
 export const StoreListView = (props) => {
   return (
     <ul className='Store__list'>
-      {props.data.map((el) => {
+      {props.data?.map((el) => {
         return (
           <li
             className='Store__list-item'
             key={`storeList${el.id}`}
-            onClick={props.onClickStoreItem(el)}
+            onClick={props.onClickStoreItem ? props.onClickStoreItem(el) : null}
           >
             <ImageView src={el.thumb} alt={el.name} />
           </li>

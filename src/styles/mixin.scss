@@ -86,6 +86,21 @@
   }
 }
 
+@mixin button {
+  @include subtitle1_medium;
+  display: inline-flex;
+  padding: 1.2rem 2.4rem;
+  color: $orange_01;
+  border: 0.2rem solid $orange_01;
+  border-radius: 10rem;
+  transition: $transition;
+
+  &:hover {
+    background: $orange_01;
+    color: $white;
+  }
+}
+
 // PARAM animation
 @keyframes modal-bg {
   0% {

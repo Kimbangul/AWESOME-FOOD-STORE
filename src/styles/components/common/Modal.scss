@@ -20,7 +20,6 @@
     box-shadow: 0.4rem 0.4rem 3.2rem rgba(0, 0, 0, 0.08);
     animation: modal-container $transition 0.1s ease-in-out both;
     overflow: hidden;
-    // padding-bottom: 3.2rem;
   }
 
   &__contents {
@@ -109,18 +108,7 @@
     margin-top: 3.2rem;
 
     a {
-      @include subtitle1_medium;
-      display: inline-flex;
-      padding: 1.2rem 2.4rem;
-      color: $orange_01;
-      border: 0.2rem solid $orange_01;
-      border-radius: 10rem;
-      transition: $transition;
-
-      &:hover {
-        background: $orange_01;
-        color: $white;
-      }
+      @include button;
     }
   }
 }
