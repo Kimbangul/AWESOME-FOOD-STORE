@@ -6,18 +6,26 @@ const StoreModal = (props) => {
     <div className='Modal'>
       <article className='Modal__container'>
         <div className='Modal__close-container'>
-          <span onClick={props.onCloseModal}>X</span>
+          <button className='Modal__close-btn' onClick={props.onCloseModal}>
+            닫기
+          </button>
         </div>
-        <h2 className='Modal__title'>{props.name}</h2>
-        <div className='Modal__img-container'>
-          <Image src={props.image} width={300} height={300} alt={props.name} />
-        </div>
-        <p className='Modal__desc'>{props.description}</p>
-        {props.url && (
-          <Link href={props.url} target='_blank'>
-            홈페이지 바로가기
-          </Link>
-        )}
+        <section className='Modal__contents'>
+          <div className='Modal__img-container'>
+            <Image fill src={props.image} alt={props.name} />
+          </div>
+          <div className='Modal__text-container'>
+            <h2 className='Modal__title'>{props.name}</h2>
+            <p className='Modal__desc'>{props.description}</p>
+            {props.url && (
+              <div className='Modal__link'>
+                <Link href={props.url} target='_blank'>
+                  홈페이지 바로가기
+                </Link>
+              </div>
+            )}
+          </div>
+        </section>
       </article>
     </div>
   );

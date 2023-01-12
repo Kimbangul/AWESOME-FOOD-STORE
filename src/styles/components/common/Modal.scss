@@ -1,0 +1,148 @@
+@keyframes modal-bg {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes modal-container {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-40%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-50%);
+  }
+}
+
+.Modal {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  animation: modal-bg $transition ease-in-out both;
+
+  &__container {
+    position: absolute;
+    max-width: $inner-width;
+    min-width: 24rem;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background: $white;
+    border-radius: 1.6rem;
+    box-shadow: 0.4rem 0.4rem 3.2rem rgba(0, 0, 0, 0.08);
+    animation: modal-container $transition 0.1s ease-in-out both;
+    overflow: hidden;
+    // padding-bottom: 3.2rem;
+  }
+
+  &__contents {
+    @include scrollbar;
+    max-height: 64rem;
+    overflow-y: auto;
+  }
+
+  &__close {
+    &-container {
+      @include flex(flex-end, center);
+      padding: 2.4rem;
+      padding-bottom: 2rem;
+    }
+
+    &-btn {
+      width: 3.2rem;
+      height: 3.2rem;
+      font-size: 0;
+      position: relative;
+      cursor: pointer;
+
+      @mixin close-bar {
+        content: "";
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%) rotate(45deg);
+        display: block;
+        width: 0.2rem;
+        height: 100%;
+        position: absolute;
+        background-color: $text_05;
+      }
+
+      &::after {
+        @include close-bar();
+      }
+
+      &::before {
+        @include close-bar();
+        transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+      }
+    }
+  }
+
+  &__text {
+    &-container {
+      padding: 0 3.2rem;
+      padding-bottom: 4rem;
+    }
+  }
+
+  &__title {
+    @include h2_bold;
+    @include poppins;
+    color: $text_05;
+    margin-top: 2.4rem;
+  }
+
+
+  &__img {
+    &-container {
+      width: 100%;
+      height: 32rem;
+      // border-radius: 3.2rem;
+      overflow: hidden;
+      position: relative;
+
+      img {
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+  }
+
+  &__desc {
+    @include subtitle2_regular;
+    line-height: 1.5;
+    white-space: pre-line;
+    color: $text_03;
+    margin-top: 2.4rem;
+  }
+
+  &__link {
+    @include flex(center);
+    margin-top: 3.2rem;
+
+    a {
+      @include subtitle1_medium;
+      display: inline-flex;
+      padding: 1.2rem 2.4rem;
+      color: $orange_01;
+      border: 0.2rem solid $orange_01;
+      border-radius: 10rem;
+      transition: $transition;
+
+      &:hover {
+        background: $orange_01;
+        color: $white;
+      }
+    }
+  }
+}
