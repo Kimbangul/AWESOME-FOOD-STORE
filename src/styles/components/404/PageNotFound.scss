@@ -1,0 +1,33 @@
+.PageNotFound {
+  @include page-inner;
+  @include flex(center, center, 0, column);
+
+  &__icon {
+    width: 16rem;
+
+    path {
+      stroke: $text_01;
+    }
+  }
+
+  &__title {
+    @include h1_bold;
+    @include poppins;
+    font-size: 4.8rem;
+    color: $text_01;
+    margin-top: 0.8rem;
+  }
+
+  &__desc {
+    @include subtitle1_regular;
+    color: $text_02;
+    text-align: center;
+    line-height: 1.5;
+    margin-top: 0.8rem;
+  }
+
+  &__time {
+    @extend .PageNotFound__desc;
+    color: $orange_01;
+  }
+}
