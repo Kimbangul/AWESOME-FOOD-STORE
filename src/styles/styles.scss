@@ -3,3 +3,12 @@
 @import 'fonts.scss';
 @import 'variable.scss';
 @import 'global.scss';
+@import 'mixin.scss';
+
+// NOTE layout
+@import 'components/layout/Header.scss';
+@import 'components/layout/Footer.scss';
+@import 'components/layout/Page.scss';
+
+// NOTE components
+@import 'components/store/Store.scss';

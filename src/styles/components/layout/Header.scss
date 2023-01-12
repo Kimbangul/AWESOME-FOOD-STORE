@@ -1,0 +1,45 @@
+.Header {
+  width: 100vw;
+  height: $header-height;
+  background: $white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  box-shadow: 0 0.4rem 2rem rgba(0, 0, 0, 0.08);
+
+  &__inner {
+    @include inner;
+    @include flex(space-between, stretch);
+    height: 100%;
+  }
+
+  &__title {
+    @include h2_bold;
+    @include poppins;
+    height: 100%;
+
+    a {
+      @include flex(center, center);
+      height: 100%;
+    }
+  }
+
+  &__menu {
+    &-list {
+      @include flex(flex-start, stretch, 0.8rem);
+      height: 100%;
+    }
+
+    &-item {
+      @include subtitle1_medium;
+      @include poppins;
+
+      a {
+        @include flex(center, center);
+        height: 100%;
+        padding: 1.6rem;
+      }
+    }
+  }
+}

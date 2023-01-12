@@ -6,8 +6,10 @@ import app from 'data/app.json';
 const Header = () => {
   return (
     <header className='Header'>
-      <HeaderTitle />
-      <HeaderMenu />
+      <div className='Header__inner'>
+        <HeaderTitle />
+        <HeaderMenu />
+      </div>
     </header>
   );
 };
