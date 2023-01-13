@@ -10,6 +10,37 @@
   }
 }
 
+@keyframes bounce {
+  0% {
+    transform: scale(1, 1) translateY(0);
+  }
+
+  5% {
+    transform: scale(1.1, 0.9) translateY(0);
+  }
+
+  25% {
+    transform: scale(0.9, 1.1) translateY(-2rem);
+  }
+
+  50% {
+    transform: scale(1.1, 0.9)translateY(0);
+  }
+
+  60% {
+    transform: scale(0.9, 1.1) translateY(-2.4rem);
+  }
+
+  70% {
+    transform: scale(1.15, 0.9) translateY(0);
+  }
+
+  100% {
+    transform: scale(1, 1) translateY(0);
+  }
+}
+
+
 @mixin fade_in($delay) {
   animation: fadeInUp 0.5s #{$delay} ease-in-out both;
 }
@@ -39,17 +70,19 @@
   &__inner {
     @include page-inner;
     padding: 8rem 0;
+    padding-top: 12.8rem;
   }
 
   &__icon {
     @include fade_in(0.3s);
-    width: 10.2rem;
+    width: 8rem;
     margin: 0 auto;
     position: relative;
+    animation: bounce 1.9s ease infinite;
   }
 
   &__text-container {
-    margin-top: 3.2rem;
+    margin-top: 1.6rem;
     opacity: 0.4;
     transition: opacity 0.5s;
 
