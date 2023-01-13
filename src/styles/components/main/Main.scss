@@ -27,6 +27,13 @@
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;
+    opacity: 0.4;
+    transition: opacity 0.5s;
+
+    &--show {
+      @extend .Main__bg;
+      opacity: 1;
+    }
   }
 
   &__inner {
@@ -43,6 +50,13 @@
 
   &__text-container {
     margin-top: 3.2rem;
+    opacity: 0.4;
+    transition: opacity 0.5s;
+
+    &--show {
+      @extend .Main__text-container;
+      opacity: 1;
+    }
   }
 
   &__title {

@@ -1,12 +1,37 @@
 import Link from 'next/link';
 import menu from 'data/menu.json';
 import useAPICall from 'utils/useAPICall';
+import { useCallback, useEffect, useRef, useState, useMemo } from 'react';
 import { StoreListView } from 'components/store/Store';
+
+import useObserver from 'utils/useObserver';
 
 import LOGO_ICON from 'src/assets/images/logo_icon.svg';
 
 const Main = () => {
   const storeList = useAPICall('GET', '/stores');
+  const [isInViewport, setIsViewport] = useState(false);
+
+  const observerRef = {
+    bg: useRef(null),
+    text: useRef(null),
+  };
+  const observer = {
+    text: useObserver(observerRef.text, { threshold: 0.3 }),
+    bg: useObserver(observerRef.bg, { threshold: [0.8, 0.9] }),
+  };
+  const getScrollAni = useMemo(() => {
+    if (observer.bg.isViewRatio < 0.9) {
+      return {
+        text: 'Main__text-container--show',
+        bg: 'Main__bg',
+      };
+    }
+    return {
+      text: 'Main__text-container',
+      bg: 'Main__bg--show',
+    };
+  }, [observer.bg.isViewRatio, observer.text.isViewRatio]);
 
   const getLink = (title) => {
     const getMenu = menu.filter((el) => el.title === title);
@@ -19,7 +44,7 @@ const Main = () => {
         <div className='Main__icon'>
           <LOGO_ICON />
         </div>
-        <div className='Main__text-container'>
+        <div className={getScrollAni.text} ref={observerRef.text}>
           <h1 className='Main__title'>
             Welcome to <br />
             <span className='Main__title--uppercase'>Awesome food store</span>!
@@ -33,10 +58,7 @@ const Main = () => {
           <Link href={getLink('STORE')}>스토어 바로가기</Link>
         </div>
       </div>
-      <div className='Main__bg' />
-      {/* <div className='Main__store-container'>
-        <StoreListView data={storeList.data} />
-      </div> */}
+      <div className={getScrollAni.bg} ref={observerRef.bg} />
     </section>
   );
 };
