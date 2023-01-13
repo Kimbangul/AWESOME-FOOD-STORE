@@ -1,0 +1,22 @@
+.About {
+  @extend .Store;
+
+  &__title {
+    @extend .Store__title;
+  }
+
+  &__img {
+    &-container {
+      width: 100%;
+      height: 28rem;
+      overflow: hidden;
+      position: relative;
+      border-radius: 2.4rem;
+
+      img {
+        object-fit: cover;
+        opacity: 0.4;
+      }
+    }
+  }
+}
