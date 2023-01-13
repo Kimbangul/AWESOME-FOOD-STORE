@@ -1,9 +1,24 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect } from 'react';
 
 const StoreModal = (props) => {
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
+
+  const onClickModal = (e) => {
+    if (e.target === e.currentTarget) {
+      props.onCloseModal();
+    }
+    return;
+  };
+
   return (
-    <div className='Modal'>
+    <div className='Modal' onClick={onClickModal}>
       <article className='Modal__container'>
         <div className='Modal__close-container'>
           <button className='Modal__close-btn' onClick={props.onCloseModal}>

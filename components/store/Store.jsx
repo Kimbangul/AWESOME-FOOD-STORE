@@ -63,7 +63,13 @@ export const StoreListView = (props) => {
   return (
     <ul className='Store__list'>
       {props.data?.map((el) => {
-        return <StoreItem key={`storeList${el.id}`} {...el} />;
+        return (
+          <StoreItem
+            key={`storeList${el.id}`}
+            {...el}
+            onClickStoreItem={props.onClickStoreItem}
+          />
+        );
       })}
     </ul>
   );
