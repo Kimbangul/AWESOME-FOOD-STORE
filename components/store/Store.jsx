@@ -3,6 +3,7 @@ import useAPICall from 'utils/useAPICall';
 
 import ImageView from 'components/common/ImageView';
 import StoreModal from 'components/store/StoreModal';
+import LoadingView from 'components/common/Loading';
 
 // COMPONENT main component
 const Store = () => {
@@ -24,6 +25,7 @@ const Store = () => {
   return (
     <section className='Store'>
       <h1 className='Store__title'>Store</h1>
+      {storeList.state === 'idle' && <LoadingView />}
       {storeList.data?.length > 0 && (
         <StoreListView
           data={storeList.data}

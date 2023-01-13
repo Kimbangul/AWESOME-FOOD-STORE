@@ -1,0 +1,32 @@
+@keyframes loading_animation {
+  0% {
+    top: 0.8rem;
+    height: 100%;
+  }
+
+  50%,
+  100% {
+    top: 2.4rem;
+    height: 0.4rem;
+  }
+}
+
+.Loading {
+  @include flex(space-between, center, 0.8rem);
+  // display: inline-block;
+  position: relative;
+  width: 8rem;
+  height: 8rem;
+  padding: 1.6rem 2rem;
+  border: 0.4rem solid $orange_01;
+  border-radius: 1.6rem;
+
+
+  &__bar {
+    display: inline-block;
+    width: 0.4rem;
+    border-radius: 10rem;
+    background: $orange_01;
+    animation: loading_animation 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+  }
+}
