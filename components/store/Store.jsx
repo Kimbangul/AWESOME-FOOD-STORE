@@ -4,12 +4,29 @@ import useAPICall from 'utils/useAPICall';
 import ImageView from 'components/common/ImageView';
 import StoreModal from 'components/store/StoreModal';
 import LoadingView from 'components/common/Loading';
+import Error from 'components/common/Error';
 
 // COMPONENT main component
 const Store = () => {
   const storeList = useAPICall('GET', '/stores');
   const [modalData, setModalData] = useState(null);
-  console.log(storeList);
+
+  // FUNCTION set component
+  const setComponetView = (state) => {
+    switch (state) {
+      case 'idle':
+        return <LoadingView />;
+      case 'rejected':
+        return (
+          <Error
+            title='Oops!'
+            text={`데이터를 불러오는 데 에러가 발생했습니다. 다시 시도해 주세요 :(`}
+          />
+        );
+      default:
+        return null;
+    }
+  };
 
   // FUNCTION modal data clear function
   const setClearModalData = () => {
@@ -25,7 +42,7 @@ const Store = () => {
   return (
     <section className='Store'>
       <h1 className='Store__title'>Store</h1>
-      {storeList.state === 'idle' && <LoadingView />}
+      {setComponetView(storeList.state)}
       {storeList.data?.length > 0 && (
         <StoreListView
           data={storeList.data}

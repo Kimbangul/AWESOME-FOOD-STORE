@@ -1,0 +1,17 @@
+.Error {
+  @include flex(center, center, 0, column);
+  flex-grow: 1;
+
+  &__icon {
+    @extend .PageNotFound__icon;
+  }
+
+  &__title {
+    @extend .PageNotFound__title;
+  }
+
+  &__desc {
+    @extend .PageNotFound__desc;
+    white-space: pre-wrap;
+  }
+}
