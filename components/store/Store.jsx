@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import useAPICall from 'utils/useAPICall';
 
+import app from 'data/app.json';
 import ImageView from 'components/common/ImageView';
 import StoreModal from 'components/store/StoreModal';
 import LoadingView from 'components/common/Loading';
@@ -16,6 +17,8 @@ const Store = () => {
     switch (state) {
       case 'idle':
         return <LoadingView />;
+      case 'fullfilled':
+
       case 'rejected':
         return (
           <Error
@@ -24,7 +27,7 @@ const Store = () => {
           />
         );
       default:
-        return null;
+        return <LoadingView />;
     }
   };
 
@@ -42,13 +45,14 @@ const Store = () => {
   return (
     <section className='Store'>
       <h1 className='Store__title'>Store</h1>
-      {setComponetView(storeList.state)}
-      {storeList.data?.length > 0 && (
-        <StoreListView
-          data={storeList.data}
-          onClickStoreItem={onClickStoreItem || null}
-        />
-      )}
+      {storeList.state !== 'fullfilled'
+        ? setComponetView(storeList.state)
+        : storeList.data?.length > 0 && (
+            <StoreListView
+              data={storeList.data}
+              onClickStoreItem={onClickStoreItem || null}
+            />
+          )}
       <ModalView data={modalData} />
     </section>
   );
@@ -59,17 +63,26 @@ export const StoreListView = (props) => {
   return (
     <ul className='Store__list'>
       {props.data?.map((el) => {
-        return (
-          <li
-            className='Store__list-item'
-            key={`storeList${el.id}`}
-            onClick={props.onClickStoreItem ? props.onClickStoreItem(el) : null}
-          >
-            <ImageView src={el.thumb} alt={el.name} />
-          </li>
-        );
+        return <StoreItem key={`storeList${el.id}`} {...el} />;
       })}
     </ul>
+  );
+};
+
+// COMPONENT store item
+const StoreItem = (props) => {
+  return (
+    <li
+      className='Store__list-item'
+      onClick={props.onClickStoreItem ? props.onClickStoreItem(props) : null}
+    >
+      <ImageView
+        src={props.thumb}
+        alt={props.name}
+        placeholder='blur'
+        blurDataURL={app.blurDataURL}
+      />
+    </li>
   );
 };
 
@@ -77,5 +90,4 @@ export const StoreListView = (props) => {
 const ModalView = (props) => {
   return <>{props.data && <StoreModal {...props.data} />}</>;
 };
-
 export default Store;
