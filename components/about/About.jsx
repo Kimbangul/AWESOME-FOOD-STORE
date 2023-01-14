@@ -1,8 +1,10 @@
 import { useMemo, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import ABOUT_BG from 'src/assets/images/about_bg.jpg';
 import useObserver from 'utils/useObserver';
+import Emoji from 'components/common/Emoji';
+
+import ABOUT_BG from 'src/assets/images/about_bg.jpg';
 
 const AboutView = () => {
   return (
@@ -22,6 +24,9 @@ const About = () => {
       <div className='About__content'>
         <div className='About__img-container'>
           <Image src={ABOUT_BG.src} fill alt='' />
+        </div>
+        <div className='About__emoji-container'>
+          <Emoji symbol='👋' />
         </div>
         <p className='About__sub'>
           {Array.from(subText).map((el, idx) => {
@@ -49,31 +54,52 @@ const About = () => {
 const Project = () => {
   const innerRef = useRef(null);
   const observer = useObserver(innerRef, {
-    threshold: [0.2, 0.4, 0.6, 0.8, 1],
+    threshold: [0.2, 0.4, 0.6],
   });
 
   const getScrollAni = useMemo(() => {
-    if (observer.isViewRatio >= 0.5) {
+    if (observer.isViewRatio >= 0.4) {
       return 'Project__inner';
     }
     return 'Project__inner--hide';
   }, [observer.isViewRatio]);
 
   const infoList = [
-    { title: '제작 기간', data: '2023.01.12 ~ 2023.01.' },
-    { title: '사용 기술스택', data: 'Next.js, JavaScript, SCSS' },
-    { title: '구현 페이지', data: '메인 페이지, ABOUT, STORE, 404' },
+    {
+      emoji: '⏰',
+      title: '제작 기간',
+      data: '2023.01.12 ~ 2023.01.',
+    },
+    {
+      emoji: '🖥️',
+      title: '사용 기술스택',
+      data: 'Next.js, JavaScript, SCSS',
+    },
+    {
+      emoji: '📁',
+      title: '구현 페이지',
+      data: '메인 페이지, ABOUT, STORE, 404',
+    },
   ];
   return (
     <article className='Project'>
       <div className={getScrollAni} ref={innerRef}>
         <h2 className='Project__title'>Project Info</h2>
         <div className='Project__content'>
-          <h3 className='Project__sub'>요약</h3>
+          <h3 className='Project__sub'>
+            <Emoji symbol='🔍' />
+            요약
+          </h3>
           <ul className='Project__info'>
             {infoList.map((el, idx) => {
               return (
                 <li className='Project__info-item' key={`infoList${idx}`}>
+                  <div
+                    className='Project__emoji'
+                    style={{ animationDelay: `${idx * 0.7}s` }}
+                  >
+                    <Emoji symbol={el.emoji} />
+                  </div>
                   <dl className='Project__info-inner'>
                     <dt className='Project__info-title'>{el.title}</dt>
                     <dd className='Project__info-data'>{el.data} </dd>
@@ -82,7 +108,10 @@ const Project = () => {
               );
             })}
           </ul>
-          <h3 className='Project__sub'>설명</h3>
+          <h3 className='Project__sub'>
+            <Emoji symbol='📝' />
+            설명
+          </h3>
           <p className='Project__desc'>
             Next.js 프레임워크를 이용하여 프론트엔드 과제를 구현하였습니다.{' '}
             <br />
@@ -95,7 +124,10 @@ const Project = () => {
             로딩 및 에러화면 출력, 모달 바깥 클릭 시에도 모달 닫기 등의 기능을
             추가하였습니다. <br />
           </p>
-          <h3 className='Project__sub'>사용 소스</h3>
+          <h3 className='Project__sub'>
+            <Emoji symbol='🎨' />
+            사용 소스
+          </h3>
           <ul className='Project__asset-list'>
             <li className='Project__asset-item'>이미지: Pixabay</li>
             <li className='Project__asset-item'>

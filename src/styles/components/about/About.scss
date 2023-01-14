@@ -21,14 +21,41 @@
     }
   }
 
+  @keyframes shake {
+
+    0%,
+    100% {
+      transform: rotate(15deg);
+    }
+
+    50% {
+      transform: rotate(0deg);
+    }
+  }
+
+  &__emoji {
+    &-container {
+      @include h1_bold;
+      font-size: 6.4rem;
+      margin-top: -5.6rem;
+      margin-left: -2rem;
+      position: relative;
+
+      .Emoji {
+        display: inline-block;
+        transform-origin: right bottom;
+        animation: shake 2s ease-in-out infinite;
+      }
+    }
+  }
+
   &__sub {
     @include h1_bold;
-    margin-top: -1.6rem;
-    position: relative;
     z-index: 1;
     color: $text_04;
     font-weight: 800;
     text-shadow: 0 0 2.4rem rgba(255, 255, 255, 1);
+    margin-top: 2.4rem;
 
     &-word {
       animation: modal-bg 0.1s both;
@@ -77,6 +104,11 @@
     &:first-child {
       margin-top: 0;
     }
+
+    .Emoji {
+      display: inline-block;
+      margin-right: 0.8rem;
+    }
   }
 
   &__row {
@@ -100,16 +132,19 @@
 
     &-item {
       @include subtitle1_regular;
-      height: 20rem;
+      display: flex;
+      flex-direction: column;
       padding: 1.6rem 0;
       background: #fff;
       box-shadow: 0 0.4rem 3.2rem rgb(0 0 0 / 5%);
-      padding: 2.4rem;
+      padding: 3.2rem 2.4rem;
       border-radius: 1.6rem;
       flex: 1 0 0;
     }
 
-    &-inner {}
+    &-inner {
+      margin-top: 1.6rem;
+    }
 
     &-title {
       font-weight: 700;
@@ -118,11 +153,20 @@
     }
 
     &-data {
-      @include subtitle2_regular;
+      @include body_regular;
       color: $text_04;
       text-align: center;
       margin-top: 0.8rem;
     }
+  }
+
+  &__emoji {
+    @include flex(center, center);
+    text-align: center;
+    font-size: 4rem;
+    flex-grow: 1;
+    transform-origin: bottom;
+    animation: jump 2.4s ease infinite;
   }
 
   &__desc {
@@ -145,4 +189,6 @@
       padding: 0.8rem 0;
     }
   }
+
+
 }
