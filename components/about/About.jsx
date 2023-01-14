@@ -160,6 +160,15 @@ const Project = () => {
               아이콘: Figma plugin {`( Iconfy, Feather Icons)`}
             </li>
           </ul>
+          <div className='Project__btn-container'>
+            <Link
+              className='Project__btn'
+              href='https://github.com/Kimbangul/CODING-TEST-AWESOME-FOOD-STORE'
+              target={'_blank'}
+            >
+              Github 바로가기 <Emoji symbol='🚀' />
+            </Link>
+          </div>
         </div>
       </div>
     </article>

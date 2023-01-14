@@ -218,5 +218,22 @@
     }
   }
 
+  &__btn {
+    // @include button;
+    @include subtitle2_bold;
+    color: $text_03;
+    text-decoration: underline;
+    display: inline-block;
+    transition: $transition;
+
+    &:hover {
+      color: $orange_01;
+    }
+
+    &-container {
+      text-align: right;
+      margin-top: 4.8rem;
+    }
+  }
 
 }
