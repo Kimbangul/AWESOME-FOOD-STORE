@@ -1,8 +1,10 @@
 import { useMemo, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import menu from 'data/menu.json';
 import useObserver from 'utils/useObserver';
 import Emoji from 'components/common/Emoji';
+import LinkEmoji from 'components/common/LinkEmoji';
 
 import ABOUT_BG from 'src/assets/images/about_bg.jpg';
 
@@ -78,7 +80,11 @@ const Project = () => {
     {
       emoji: '📁',
       title: '구현 페이지',
-      data: '메인 페이지, ABOUT, STORE, 404',
+      link: [
+        { title: '메인 페이지', link: '/' },
+        ...menu,
+        { title: '404', link: '/404' },
+      ],
     },
   ];
   return (
@@ -102,7 +108,23 @@ const Project = () => {
                   </div>
                   <dl className='Project__info-inner'>
                     <dt className='Project__info-title'>{el.title}</dt>
-                    <dd className='Project__info-data'>{el.data} </dd>
+                    <dd className='Project__info-data'>
+                      <>
+                        {el.data && el.data}
+                        {el.link &&
+                          el.link.map((menu) => {
+                            return (
+                              <Link
+                                key={menu.title}
+                                href={menu.link}
+                                target='_blank'
+                              >
+                                {menu.title}
+                              </Link>
+                            );
+                          })}
+                      </>
+                    </dd>
                   </dl>
                 </li>
               );
@@ -129,7 +151,11 @@ const Project = () => {
             사용 소스
           </h3>
           <ul className='Project__asset-list'>
-            <li className='Project__asset-item'>이미지: Pixabay</li>
+            <li className='Project__asset-item'>
+              이미지: Pixabay{' '}
+              <LinkEmoji href='https://pixabay.com/ko/photos/%ec%8b%9d%eb%8b%b9-%ea%b0%80%ea%b5%ac-%ec%9d%b8%ed%85%8c%eb%a6%ac%ec%96%b4-1837150/' />
+              <LinkEmoji href='https://pixabay.com/ko/photos/%eb%b9%b5-%ed%8c%a8%ec%8a%a4%ed%8a%b8%eb%a6%ac-%ed%81%ac%eb%a3%a8%ec%95%84%ec%83%81-1867459/' />
+            </li>
             <li className='Project__asset-item'>
               아이콘: Figma plugin {`( Iconfy, Feather Icons)`}
             </li>

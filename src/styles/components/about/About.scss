@@ -157,6 +157,29 @@
       color: $text_04;
       text-align: center;
       margin-top: 0.8rem;
+
+      a {
+        display: inline-block;
+        margin-right: 0.2rem;
+        text-decoration: underline;
+        transition: color $transition;
+
+        &:hover {
+          color: $orange_01;
+        }
+
+        &::after {
+          content: ", ";
+        }
+
+        &:last-child {
+          margin-right: 0;
+
+          &::after {
+            content: "";
+          }
+        }
+      }
     }
   }
 
@@ -187,6 +210,11 @@
       list-style: disc;
       color: $text_04;
       padding: 0.8rem 0;
+
+      a {
+        display: inline-block;
+        font-size: 0.9em;
+      }
     }
   }
 
