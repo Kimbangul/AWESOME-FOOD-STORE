@@ -1,35 +1,16 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import useAPICall from 'utils/useAPICall';
 
 import app from 'data/app.json';
 import ImageView from 'components/common/ImageView';
 import StoreModal from 'components/store/StoreModal';
-import LoadingView from 'components/common/Loading';
 import Error from 'components/common/Error';
+import useLoadingData from 'utils/useLoadingData';
 
 // COMPONENT main component
 const Store = () => {
   const storeList = useAPICall('GET', '/stores');
   const [modalData, setModalData] = useState(null);
-
-  // FUNCTION set component
-  const setComponetView = (state) => {
-    switch (state) {
-      case 'idle':
-        return <LoadingView />;
-      case 'fullfilled':
-
-      case 'rejected':
-        return (
-          <Error
-            title='Oops!'
-            text={`데이터를 불러오는 데 에러가 발생했습니다. 다시 시도해 주세요 :(`}
-          />
-        );
-      default:
-        return <LoadingView />;
-    }
-  };
 
   // FUNCTION modal data clear function
   const setClearModalData = () => {
@@ -42,36 +23,47 @@ const Store = () => {
     return;
   };
 
+  // FUNCTION set component
+  const setComponetView = useLoadingData(
+    storeList.state,
+    <StoreListView
+      data={storeList.data}
+      onClickStoreItem={onClickStoreItem || null}
+    />
+  );
+
   return (
-    <section className='Store'>
-      <h1 className='Store__title'>Store</h1>
-      {storeList.state !== 'fullfilled'
-        ? setComponetView(storeList.state)
-        : storeList.data?.length > 0 && (
-            <StoreListView
-              data={storeList.data}
-              onClickStoreItem={onClickStoreItem || null}
-            />
-          )}
+    <>
+      <section className='Store'>
+        <h1 className='Store__title'>Store</h1>
+        {setComponetView}
+      </section>
       <ModalView data={modalData} />
-    </section>
+    </>
   );
 };
 
 // COMPONENT store list
 export const StoreListView = (props) => {
+  console.log(props.data.length);
   return (
-    <ul className='Store__list'>
-      {props.data?.map((el) => {
-        return (
-          <StoreItem
-            key={`storeList${el.id}`}
-            {...el}
-            onClickStoreItem={props.onClickStoreItem}
-          />
-        );
-      })}
-    </ul>
+    <>
+      {props.data?.length > 0 ? (
+        <ul className='Store__list'>
+          {props.data?.map((el) => {
+            return (
+              <StoreItem
+                key={`storeList${el.id}`}
+                {...el}
+                onClickStoreItem={props.onClickStoreItem}
+              />
+            );
+          })}
+        </ul>
+      ) : (
+        <Error title='No data.' text={`현재 등록된 스토어가 없습니다.`} />
+      )}
+    </>
   );
 };
 

@@ -120,4 +120,13 @@
       @include button;
     }
   }
+
+  .Error {
+    width: 76.1rem;
+    height: 64rem;
+  }
+
+  .LoadingView {
+    @extend .Error;
+  }
 }
