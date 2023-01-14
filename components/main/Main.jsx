@@ -1,17 +1,13 @@
 import Link from 'next/link';
 import menu from 'data/menu.json';
 import useAPICall from 'utils/useAPICall';
-import { useCallback, useEffect, useRef, useState, useMemo } from 'react';
-import { StoreListView } from 'components/store/Store';
+import { useRef, useState, useMemo } from 'react';
 
 import useObserver from 'utils/useObserver';
 
 import LOGO_ICON from 'src/assets/images/logo_icon.svg';
 
 const Main = () => {
-  const storeList = useAPICall('GET', '/stores');
-  const [isInViewport, setIsViewport] = useState(false);
-
   const observerRef = {
     bg: useRef(null),
     text: useRef(null),
@@ -31,7 +27,7 @@ const Main = () => {
       text: 'Main__text-container',
       bg: 'Main__bg--show',
     };
-  }, [observer.bg.isViewRatio, observer.text.isViewRatio]);
+  }, [observer.bg.isViewRatio]);
 
   const getLink = (title) => {
     const getMenu = menu.filter((el) => el.title === title);

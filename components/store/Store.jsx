@@ -45,7 +45,6 @@ const Store = () => {
 
 // COMPONENT store list
 export const StoreListView = (props) => {
-  console.log(props.data.length);
   return (
     <>
       {props.data?.length > 0 ? (

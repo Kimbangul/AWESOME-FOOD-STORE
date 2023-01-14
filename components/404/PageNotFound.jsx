@@ -22,7 +22,7 @@ const PageNotFound = () => {
     };
     const execTimer = setTimeout(timer, 1000);
     return () => clearTimeout(execTimer);
-  }, [time]);
+  }, [router, time]);
 
   return (
     <>

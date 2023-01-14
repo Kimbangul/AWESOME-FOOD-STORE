@@ -3,6 +3,7 @@
 
   &__title {
     @extend .Store__title;
+
   }
 
   &__img {
@@ -15,8 +16,133 @@
 
       img {
         object-fit: cover;
-        opacity: 0.4;
+        opacity: 0.3;
       }
+    }
+  }
+
+  &__sub {
+    @include h1_bold;
+    margin-top: -1.6rem;
+    position: relative;
+    z-index: 1;
+    color: $text_04;
+    font-weight: 800;
+    text-shadow: 0 0 2.4rem rgba(255, 255, 255, 1);
+
+    &-word {
+      animation: modal-bg 0.1s both;
+    }
+  }
+
+  &__desc {
+    @include subtitle1_regular;
+    line-height: 1.5;
+    margin-top: 2.4rem;
+    color: $text_03;
+  }
+}
+
+.Project {
+  $Project: &;
+  background: $bg_04;
+
+  &__title {
+    @extend .Store__title;
+
+    &::after {
+      background: $orange_01;
+    }
+  }
+
+  &__inner {
+    @extend .Store;
+    padding-top: 8rem;
+    opacity: 1;
+    transition: 0.5s;
+    animation: none;
+
+    &--hide {
+      @extend .Project__inner;
+      opacity: 0;
+
+    }
+  }
+
+  &__sub {
+    @include h2_bold;
+    color: $text_03;
+    margin-top: 4.8rem;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+
+    #{$Project}__sub {
+      margin-top: 0;
+    }
+
+    #{$Project}__desc {
+      margin-top: 0;
+    }
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.6rem;
+    gap: 2.4rem;
+
+    &-item {
+      @include subtitle1_regular;
+      height: 20rem;
+      padding: 1.6rem 0;
+      background: #fff;
+      box-shadow: 0 0.4rem 3.2rem rgb(0 0 0 / 5%);
+      padding: 2.4rem;
+      border-radius: 1.6rem;
+      flex: 1 0 0;
+    }
+
+    &-inner {}
+
+    &-title {
+      font-weight: 700;
+      color: $text_02;
+      text-align: center;
+    }
+
+    &-data {
+      @include subtitle2_regular;
+      color: $text_04;
+      text-align: center;
+      margin-top: 0.8rem;
+    }
+  }
+
+  &__desc {
+    @include subtitle2_regular;
+    line-height: 1.6;
+    margin-top: 2.4rem;
+    color: $text_04;
+  }
+
+  &__asset {
+    &-list {
+      margin-top: 2.4rem;
+      padding-left: 1.6rem;
+    }
+
+    &-item {
+      @include subtitle2_regular;
+      list-style: disc;
+      color: $text_04;
+      padding: 0.8rem 0;
     }
   }
 }

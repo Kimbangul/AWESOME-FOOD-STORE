@@ -8,7 +8,6 @@ import useLoadingData from 'utils/useLoadingData';
 
 const StoreModal = (props) => {
   const data = useAPICall('GET', `/stores/${props.id}`);
-  console.log(data);
 
   const setComponentView = useLoadingData(
     data.state,
