@@ -144,34 +144,38 @@
   }
 }
 
-@keyframes jump {
-  0% {
-    transform: scale(1, 1) translateY(0);
+@mixin jump($name: default, $x: 1.1, $y: 0.9, $z: -2rem, $time: 2.4s, $bounce: 0.05) {
+  @keyframes jump__#{$name} {
+    0% {
+      transform: scale(1, 1) translateY(0);
+    }
+
+    5% {
+      transform: scale($x, $y) translateY(0);
+    }
+
+    25% {
+      transform: scale($y, $x) translateY($z);
+    }
+
+    50% {
+      transform: scale($x, $y) translateY(0);
+    }
+
+    60% {
+      transform: scale(#{$x + $bounce}, $y) translateY(0);
+    }
+
+    70% {
+      transform: scale(1, 1) translateY(0);
+    }
+
+    100% {
+      transform: scale(1, 1) translateY(0);
+    }
   }
 
-  5% {
-    transform: scale(1.1, 0.9) translateY(0);
-  }
-
-  25% {
-    transform: scale(0.9, 1.1) translateY(-2rem);
-  }
-
-  50% {
-    transform: scale(1.1, 0.9)translateY(0);
-  }
-
-  60% {
-    transform: scale(1.15, 0.9) translateY(0);
-  }
-
-  70% {
-    transform: scale(1, 1) translateY(0);
-  }
-
-  100% {
-    transform: scale(1, 1) translateY(0);
-  }
+  animation: jump__#{$name} $time ease infinite;
 }
 
 

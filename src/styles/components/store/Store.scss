@@ -10,6 +10,7 @@
     gap: 3.2rem;
 
     &-item {
+      @include jump('list', 1, 1, -0.8rem, 3s, 0);
       border-radius: 2.4rem;
       overflow: hidden;
       position: relative;

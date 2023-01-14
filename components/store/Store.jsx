@@ -49,9 +49,10 @@ export const StoreListView = (props) => {
     <>
       {props.data?.length > 0 ? (
         <ul className='Store__list'>
-          {props.data?.map((el) => {
+          {props.data?.map((el, idx) => {
             return (
               <StoreItem
+                idx={idx}
                 key={`storeList${el.id}`}
                 {...el}
                 onClickStoreItem={props.onClickStoreItem}
@@ -72,6 +73,7 @@ const StoreItem = (props) => {
     <li
       className='Store__list-item'
       onClick={props.onClickStoreItem ? props.onClickStoreItem(props) : null}
+      style={{ animationDelay: `${props.idx * 0.2}s` }}
     >
       <ImageView
         src={props.thumb}

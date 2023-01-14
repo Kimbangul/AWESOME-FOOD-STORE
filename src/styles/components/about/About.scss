@@ -185,11 +185,11 @@
 
   &__emoji {
     @include flex(center, center);
+    @include jump(default);
     text-align: center;
     font-size: 4rem;
     flex-grow: 1;
     transform-origin: bottom;
-    animation: jump 2.4s ease infinite;
   }
 
   &__desc {
