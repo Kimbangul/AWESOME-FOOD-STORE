@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import menu from 'data/menu.json';
-import useAPICall from 'utils/useAPICall';
-import { useRef, useState, useMemo } from 'react';
+import { useRef, useMemo } from 'react';
 
 import useObserver from 'utils/useObserver';
 

@@ -2,7 +2,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect } from 'react';
 
-import LoadingView from 'components/common/Loading';
 import useAPICall from 'utils/useAPICall';
 import useLoadingData from 'utils/useLoadingData';
 

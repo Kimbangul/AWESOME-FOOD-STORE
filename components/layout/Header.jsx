@@ -6,7 +6,7 @@ import LOGO from 'src/assets/images/logo.svg';
 import LOGO_ICON from 'src/assets/images/logo_icon.svg';
 import STORE_24 from 'src/assets/images/store_24.svg';
 import INFO_24 from 'src/assets/images/info_24.svg';
-import { use, useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 // COMPONENT main component
 const Header = () => {

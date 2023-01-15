@@ -13,5 +13,6 @@
   &__desc {
     @extend .PageNotFound__desc;
     white-space: pre-wrap;
+    word-break: keep-all;
   }
 }

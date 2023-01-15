@@ -130,6 +130,11 @@
   .Error {
     width: 76rem;
     height: 64rem;
+
+    @media (max-width: 760px) {
+      width: 100%;
+      padding: 2.4rem;
+    }
   }
 
   .LoadingView {

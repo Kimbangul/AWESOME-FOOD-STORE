@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import useAPICall from 'utils/useAPICall';
 
 import app from 'data/app.json';
