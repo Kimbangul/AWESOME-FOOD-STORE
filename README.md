@@ -1,36 +1,17 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# AWSOME FOOD STORE👩🏻‍🍳
+## 🔍요약
+* 제작 기간 : 2023.01.12 ~ 2023.01.14
+* 사용 기술스택 : Next.js, JavaScript, SCSS
+* 구현 페이지: 메인 페이지, ABOUT, STORE, 404
 
-## Getting Started
+## 📝설명
+Next.js 프레임워크를 이용하여 프론트엔드 과제를 구현하였습니다.
+식욕을 돋우게 하는 오렌지 컬러를 primary 컬러로 선정하였고, 커먼그라운드 사이트를 참고하여 Figma로 간단한 레이아웃을 구성했습니다.
+페이지가 지나치게 정적으로 보이는 것을 막기 위해 애니메이션과 transition 효과 활용을 시도하였습니다. 🙇‍♀️
+async/await 처리를 통해 서버에서 데이터 불러오기, 팝업 출력, 에러 페이지에서 메인으로 이동 등의 기본 기능 이외에,
+IntersectionObserver를 이용한 스크롤 애니메이션 구현, 서버 통신 시 로딩 및 에러화면 출력, 모달 바깥 클릭 시에도 모달 닫기 등의 기능을 추가하였습니다.
+짧은 시간으로 비록 완벽하진 않지만, 반응형 레이아웃도 구현하고자 하였습니다. 👩‍🎨
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 🎨사용 소스
+* 이미지: Pixabay
+* 아이콘: Figma plugin ( Iconfy, Feather Icons)
