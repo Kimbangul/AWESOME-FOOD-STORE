@@ -29,6 +29,23 @@
 html {
   font-size: 62.5%;
   transition: font-size 0.3s;
+
+  @media(max-width: $tablet) {
+    font-size: 60%;
+  }
+
+
+  @media(max-width: $mobile) {
+    font-size: 50%;
+  }
+
+  // @media (max-width: 361px) {
+  //   font-size: 50% !important;
+  // }
+
+  // @media (max-width: 300px) {
+  //   font-size: 46% !important;
+  // }
 }
 
 body {

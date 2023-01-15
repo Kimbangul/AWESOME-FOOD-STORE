@@ -46,7 +46,13 @@ const ModalContents = (props) => {
   return (
     <>
       <div className='Modal__img-container'>
-        <Image fill src={props.image} alt={props.name} />
+        <Image
+          fill
+          src={props.image}
+          alt={props.name}
+          sizes='(max-width: 1080px) 100vw,
+        (max-width: 500px) 50vw'
+        />
       </div>
       <div className='Modal__text-container'>
         <h2 className='Modal__title'>{props.name}</h2>

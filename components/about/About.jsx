@@ -25,7 +25,7 @@ const About = () => {
       <h1 className='About__title'>About</h1>
       <div className='About__content'>
         <div className='About__img-container'>
-          <Image src={ABOUT_BG.src} fill alt='' />
+          <Image src={ABOUT_BG.src} fill alt='' priority />
         </div>
         <div className='About__emoji-container'>
           <Emoji symbol='👋' />
