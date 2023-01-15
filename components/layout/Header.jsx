@@ -6,7 +6,7 @@ import LOGO from 'src/assets/images/logo.svg';
 import LOGO_ICON from 'src/assets/images/logo_icon.svg';
 import STORE_24 from 'src/assets/images/store_24.svg';
 import INFO_24 from 'src/assets/images/info_24.svg';
-import { useEffect } from 'react';
+import { use, useCallback, useEffect, useMemo, useState } from 'react';
 
 // COMPONENT main component
 const Header = () => {
@@ -35,6 +35,16 @@ const HeaderTitle = (props) => {
 
 // COMPONENT header menu list
 const HeaderMenu = () => {
+  const [path, setPath] = useState(null);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const winPath = window.location.pathname;
+      setPath(winPath);
+    }
+    return;
+  }, []);
+
   // FUNCTION 메뉴 아이콘 구해 주는 함수
   const getIcon = (title) => {
     switch (title) {
@@ -46,15 +56,18 @@ const HeaderMenu = () => {
   };
 
   // FUNCTION 현재 메뉴 구해 주는 함수
-  const getActivedMenu = (link) => {
-    if (window) {
-      const nowPath = window.location.pathname.split('/');
-      if (`/${nowPath[1]}` === link) {
-        return 'Header__menu-item--active';
+  const getActivedMenu = useCallback(
+    (link) => {
+      if (path !== null) {
+        const nowPath = path.split('/');
+        if (`/${nowPath[1]}` === link) {
+          return 'Header__menu-item--active';
+        }
       }
-    }
-    return 'Header__menu-item';
-  };
+      return 'Header__menu-item';
+    },
+    [path]
+  );
 
   return (
     <nav className='Header__menu'>
