@@ -63,6 +63,8 @@
   }
 
   &__menu {
+    $Header__menu: &;
+
     &-list {
       @include flex(flex-start, stretch, 0.8rem);
       height: 100%;
@@ -118,6 +120,8 @@
         @media (max-width: $tablet) {
           padding: 1.6rem 2rem;
         }
+
+
       }
     }
 
@@ -127,6 +131,11 @@
 
       path {
         stroke: $text_03;
+        transition: stroke $transition;
+
+        #{$Header__menu}-item--active & {
+          stroke: $orange_01;
+        }
       }
 
       @media(max-width: $tablet) {
