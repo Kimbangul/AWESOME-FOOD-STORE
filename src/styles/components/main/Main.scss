@@ -17,6 +17,8 @@
 .Main {
   animation: modal-bg $transition 0.2s ease-in-out both;
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 
   &__bg {
     width: 100%;
@@ -28,7 +30,15 @@
     background-repeat: no-repeat;
     background-size: cover;
     opacity: 0.4;
-    transition: opacity 0.5s;
+    transition: opacity 0.5s, height $transition;
+
+    @media (max-width: $laptop) {
+      height: 36rem;
+    }
+
+    @media (max-width: $mobile) {
+      height: 30rem;
+    }
 
     &--show {
       @extend .Main__bg;
@@ -92,6 +102,8 @@
     margin-top: 3.2rem;
     color: $text_03;
     animation: modal-bg $transition 1.2s ease-in-out both;
+    word-break: keep-all;
+    line-height: 1.5;
 
     &--uppercase {
       text-transform: uppercase;

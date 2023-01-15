@@ -33,6 +33,19 @@
   &__logo {
     width: 22.8rem;
 
+    @media(max-width: $mobile) {
+      display: none;
+    }
+
+    &--mb {
+      display: none;
+      width: 4rem;
+
+      @media(max-width: $mobile) {
+        display: block;
+      }
+    }
+
     * {
       transition: $transition;
     }
@@ -53,6 +66,12 @@
     &-list {
       @include flex(flex-start, stretch, 0.8rem);
       height: 100%;
+
+      @media (max-width: $tablet) {
+        gap: 0;
+        transform: translateX(1.6rem);
+      }
+
     }
 
     &-item {
@@ -86,7 +105,31 @@
         @include flex(center, center);
         height: 100%;
         padding: 1.6rem 2.4rem;
+
+        @media (max-width: $tablet) {
+          padding: 1.6rem 2rem;
+        }
+      }
+    }
+
+    &-icon {
+      width: 3rem;
+      display: none;
+
+      path {
+        stroke: $text_03;
+      }
+
+      @media(max-width: $tablet) {
+        display: block;
+      }
+    }
+
+    &-text {
+      @media (max-width: $tablet) {
+        display: none;
       }
     }
   }
+
 }

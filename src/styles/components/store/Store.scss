@@ -19,6 +19,7 @@
 
     @media(max-width: $mobile) {
       grid-template-columns: 1fr 1fr;
+      grid-gap: 2.4rem;
     }
 
     &-item {

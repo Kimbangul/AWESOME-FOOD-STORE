@@ -8,6 +8,12 @@
     @include flex(space-between, center);
     height: 100%;
     padding: 3.2rem 0;
+
+    @media (max-width: $tablet) {
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
   }
 
   &__title {
