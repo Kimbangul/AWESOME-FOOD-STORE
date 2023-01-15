@@ -6,6 +6,7 @@ import LOGO from 'src/assets/images/logo.svg';
 import LOGO_ICON from 'src/assets/images/logo_icon.svg';
 import STORE_24 from 'src/assets/images/store_24.svg';
 import INFO_24 from 'src/assets/images/info_24.svg';
+import { useEffect } from 'react';
 
 // COMPONENT main component
 const Header = () => {
@@ -34,6 +35,7 @@ const HeaderTitle = (props) => {
 
 // COMPONENT header menu list
 const HeaderMenu = () => {
+  // FUNCTION 메뉴 아이콘 구해 주는 함수
   const getIcon = (title) => {
     switch (title) {
       case 'STORE':
@@ -42,13 +44,25 @@ const HeaderMenu = () => {
         return <INFO_24 className='Header__menu-icon' />;
     }
   };
+
+  // FUNCTION 현재 메뉴 구해 주는 함수
+  const getActivedMenu = (link) => {
+    if (window) {
+      const nowPath = window.location.pathname.split('/');
+      if (`/${nowPath[1]}` === link) {
+        return 'Header__menu-item--active';
+      }
+    }
+    return 'Header__menu-item';
+  };
+
   return (
     <nav className='Header__menu'>
       {menu.length > 0 && (
         <ul className='Header__menu-list'>
           {menu.map((el, idx) => {
             return (
-              <li className='Header__menu-item' key={`menuList${idx}`}>
+              <li className={getActivedMenu(el.link)} key={`menuList${idx}`}>
                 <Link href={el.link}>
                   {getIcon(el.title)}
                   <span className='Header__menu-text'>{el.title}</span>

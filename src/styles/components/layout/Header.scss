@@ -101,6 +101,15 @@
         }
       }
 
+      &--active {
+        @extend .Header__menu-item;
+        color: $orange_01;
+
+        &::after {
+          width: 100%;
+        }
+      }
+
       a {
         @include flex(center, center);
         height: 100%;

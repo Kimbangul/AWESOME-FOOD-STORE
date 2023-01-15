@@ -70,7 +70,7 @@ const Project = () => {
     {
       emoji: '⏰',
       title: '제작 기간',
-      data: '2023.01.12 ~ 2023.01.',
+      data: '2023.01.12 ~ 2023.01.15.',
     },
     {
       emoji: '🖥️',
@@ -147,6 +147,11 @@ const Project = () => {
             IntersectionObserver를 이용한 스크롤 애니메이션 구현, 서버 통신 시
             로딩 및 에러화면 출력, 모달 바깥 클릭 시에도 모달 닫기 등의 기능을
             추가하였습니다. <br />
+            짧은 시간으로 비록 완벽하진 않지만, 반응형 레이아웃도 구현하고자
+            하였습니다. <Emoji symbol='👩‍🎨' />
+            <br />
+            <br />
+            설명을 읽어 주셔서 감사합니다!
           </p>
           <h3 className='Project__sub'>
             <Emoji symbol='🎨' />
